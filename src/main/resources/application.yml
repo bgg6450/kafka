@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: 14.63.214.96:9092
+      group-id: nas
+      listener:
+        annotation:
+          default-group-id: my-group
+          topics: test
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+    producer:
+      bootstrap-servers: 14.63.214.96:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
